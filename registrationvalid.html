@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Validation</title>
+
+<style>
+form{width:250px;margin:auto;font-family:Arial}
+input{width:100%;margin:5px 0;padding:6px}
+#msg{color:red}
+</style>
+</head>
+
+<body>
+
+<form id="f">
+<h3>Register</h3>
+
+<input id="u" placeholder="Username">
+<input id="e" placeholder="Email">
+<input id="p" placeholder="Password">
+<input id="ph" placeholder="Phone">
+
+<button type="submit">Submit</button>
+<p id="msg"></p>
+</form>
+
+<script>
+document.getElementById("f").onsubmit=function(e){
+e.preventDefault()
+
+let u=document.getElementById("u").value
+let e1=document.getElementById("e").value
+let p=document.getElementById("p").value
+let ph=document.getElementById("ph").value
+let msg=document.getElementById("msg")
+
+msg.style.color="red"
+
+if(!/^[a-zA-Z0-9]{4,12}$/.test(u))
+return msg.innerHTML="Invalid Username"
+
+if(!/^[^ ]+@[^ ]+\.[a-z]{2,}$/.test(e1))
+return msg.innerHTML="Invalid Email"
+
+if(!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/.test(p))
+return msg.innerHTML="Weak Password"
+
+if(!/^[0-9]{10}$/.test(ph))
+return msg.innerHTML="Invalid Phone"
+
+msg.style.color="green"
+msg.innerHTML="Registration Successful!"
+}
+</script>
+
+</body>
+</html>
