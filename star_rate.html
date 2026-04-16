@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa-star{font-size:40px;cursor:pointer}
+</style>
+</head>
+<body>
+<h3>Rate Our Product</h3>
+<div id="stars">
+<i class="fa fa-star"></i>
+<i class="fa fa-star"></i>
+<i class="fa fa-star"></i>
+<i class="fa fa-star"></i>
+<i class="fa fa-star"></i>
+</div>
+<p id="res">Rating: 0</p>
+<script>
+$("#stars i").click(function(){
+let r = $(this).index() + 1
+$("#stars i").css("color","black")     // reset all
+$("#stars i").each(function(i){
+  if(i < r) $(this).css("color","gold")
+})
+$("#res").text("Rating: "+r)
+})
+</script>
+</body>
+</html>
