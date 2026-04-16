@@ -1,0 +1,17 @@
+<html>
+<head>
+<script>
+function changeColor()
+{
+var color = document.getElementById('color').value;
+var body = document.getElementsByTagName('body')[0];
+body.style.backgroundColor=color;
+}
+</script>
+</head>
+<body>
+<input type="text" id="color" placeholder="#FFFFFF">
+<br><br>
+<button onclick="changeColor()">Change Color</button>
+</body>
+</html>
