@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Validation</title>
+    <title>Registration Form Validation</title>
 
-<style>
-form{width:250px;margin:auto;font-family:Arial}
-input{width:100%;margin:5px 0;padding:6px}
-#msg{color:red}
-</style>
+    <script>
+        function validate() {
+
+            var uname = document.getElementById("un").value;
+            var email = document.getElementById("em").value;
+            var password = document.getElementById("pwd").value;
+            var mobile = document.getElementById("mb").value;
+
+            // Regular Expressions
+            var up = /^[A-Za-z0-9]{3,8}$/;
+            var ep = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+            var pp = /^[A-Za-z0-9]{6,8}$/;
+            var mp = /^[0-9]{10}$/;
+
+            // Validation checks
+            if (!up.test(uname)) {
+                alert("Invalid Username");
+                return false;
+            }
+
+            if (!ep.test(email)) {
+                alert("Invalid Email");
+                return false;
+            }
+
+            if (!pp.test(password)) {
+                alert("Invalid Password");
+                return false;
+            }
+
+            if (!mp.test(mobile)) {
+                alert("Invalid Mobile Number");
+                return false;
+            }
+
+            alert("Success!");
+            return true;
+        }
+    </script>
 </head>
 
 <body>
+    <h2>Registration Form</h2>
 
-<form id="f">
-<h3>Register</h3>
+    <form onsubmit="return validate()">
+        Username: <input type="text" id="un"><br><br>
+        Email: <input type="text" id="em"><br><br>
+        Password: <input type="password" id="pwd"><br><br>
+        Mobile: <input type="text" id="mb"><br><br>
 
-<input id="u" placeholder="Username">
-<input id="e" placeholder="Email">
-<input id="p" placeholder="Password">
-<input id="ph" placeholder="Phone">
-
-<button type="submit">Submit</button>
-<p id="msg"></p>
-</form>
-
-<script>
-document.getElementById("f").onsubmit=function(e){
-e.preventDefault()
-
-let u=document.getElementById("u").value
-let e1=document.getElementById("e").value
-let p=document.getElementById("p").value
-let ph=document.getElementById("ph").value
-let msg=document.getElementById("msg")
-
-msg.style.color="red"
-
-if(!/^[a-zA-Z0-9]{4,12}$/.test(u))
-return msg.innerHTML="Invalid Username"
-
-if(!/^[^ ]+@[^ ]+\.[a-z]{2,}$/.test(e1))
-return msg.innerHTML="Invalid Email"
-
-if(!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/.test(p))
-return msg.innerHTML="Weak Password"
-
-if(!/^[0-9]{10}$/.test(ph))
-return msg.innerHTML="Invalid Phone"
-
-msg.style.color="green"
-msg.innerHTML="Registration Successful!"
-}
-</script>
-
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
