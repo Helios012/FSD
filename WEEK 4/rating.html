@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rate Us</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+
+        .star {
+            font-size: 40px;
+            cursor: pointer;
+            color: gray;
+        }
+
+        .active {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Rating</h2>
+
+    <span class="star" data-value="1">&#9733;</span>
+    <span class="star" data-value="2">&#9733;</span>
+    <span class="star" data-value="3">&#9733;</span>
+    <span class="star" data-value="4">&#9733;</span>
+    <span class="star" data-value="5">&#9733;</span>
+
+    <p id="result"></p>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".star").click(function () {
+
+                let value = $(this).data("value");
+
+                $(".star").each(function () {
+
+                    if ($(this).data("value") <= value) {
+                        $(this).addClass("active");
+                    } else {
+                        $(this).removeClass("active");
+                    }
+
+                });
+
+                $("#result").text("You rated " + value + " stars");
+            });
+
+        });
+    </script>
+
+</body>
+</html>
